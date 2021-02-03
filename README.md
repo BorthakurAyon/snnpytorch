@@ -3,6 +3,7 @@ SNN-PyTorch
 
 ![License](https://img.shields.io/github/license/BorthakurAyon/snnpytorch?style=flat-square)
 ![Issues](https://img.shields.io/github/issues/BorthakurAyon/snnpytorch)
+![forks](https://img.shields.io/github/forks/BorthakurAyon/snnpytorch)
 ![Stars](https://img.shields.io/github/stars/BorthakurAyon/snnpytorch)
 
 
