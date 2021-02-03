@@ -35,6 +35,7 @@ class Pipeline(object):
 
         Parse command line inputs and update the model
         """
+
         parser = argparse.ArgumentParser()
         parser.add_argument("--num_steps", type=int, default=200)
         parser.add_argument("--num_input_neurons", type=int, default=10)
@@ -54,6 +55,7 @@ class Pipeline(object):
 
         Generate and save input spike raster.
         """
+
         input_data = np.zeros((self.num_steps, self.num_input_neurons))
         expectation = 5
         num_spikes_per_neuron = int(self.num_steps / expectation)
@@ -75,6 +77,7 @@ class Pipeline(object):
         Load spike data for time points using torch dataloader\n
         :return: Input spike data for a single time point
         """
+
         # Parameters
         params = {'shuffle': False,
                   'batch_size': 1
@@ -93,6 +96,7 @@ class Pipeline(object):
         Run the simulation for the defined number of steps.\n
         :return: input spike raster, output spike raster
         """
+
         output_spikes = []
         input_spikes = []
 
@@ -138,6 +142,7 @@ class Pipeline(object):
         :param input_spike_data: Input spike raster
         :param output_spike_data: Output spike raster
         """
+
         fig, ax = plt.subplots(1, 2)
 
         # Input spike raster plot

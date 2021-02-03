@@ -21,7 +21,7 @@ class SynapseLayer(nn.Module):
     Spiking Neural Networks' by Wu et al.,
     https://www.frontiersin.org/articles/10.3389/fnins.2018.00331/full \n
 
-    In PyTorch, the total synaptic input current to a neuron / synapse states
+    In PyTorch, the total synaptic input current to a neuron / synapse state
     (i) update is performed in the following manner:
 
     .. math::
@@ -61,9 +61,10 @@ class SynapseLayer(nn.Module):
     def initialize_states(self, model_device='cuda:0') -> None:
         """
 
-        Initialise synapse layer weights, connectivity, and state.
+        Initialise synapse layer weights, connectivity, and state.\n
         :param model_device: 'cpu' or 'cuda:0'
         """
+
         layer_shape = (self.num_output_neurons, self.num_input_neurons)
 
         # Declare Variable parameters
@@ -87,6 +88,7 @@ class SynapseLayer(nn.Module):
 
         Create random connectivity between input and output layer neurons.
         """
+
         for _pre_index in range(self.num_input_neurons):
             _post_indices = np.random.choice(
                 range(self.num_output_neurons),
@@ -98,7 +100,7 @@ class SynapseLayer(nn.Module):
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         """
 
-        Forward pass for this synapse layer.
+        Forward pass for this synapse layer.\n
         :param x: Input neuron spikes
         :return: Synapse state / Input current to the output layer
         """
@@ -113,7 +115,7 @@ class SynapseLayer(nn.Module):
     def update_synapse_states(self, x: torch.Tensor):
         """
 
-        Update the synapse state
+        Update the synapse state.\n
         :param x: Input neuron spikes
         :return: Synapse state / Input current to the output layer
         """

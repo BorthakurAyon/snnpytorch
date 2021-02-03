@@ -54,11 +54,12 @@ class SpikingNeuronLayer(nn.Module):
         """
 
         Initialize the layer variable parameters: membrane potential and
-        neuron spiked.
+        neuron spiked.\n
 
         :param layer_shape: ( batch size, num_neurons )
         :param model_device: 'cpu' or 'cuda:0'
         """
+
         if layer_shape is None:
             layer_shape = (1, self.num_neurons)
 
@@ -76,8 +77,9 @@ class SpikingNeuronLayer(nn.Module):
         Forward pass for this spiking neuron layer
 
         :param x: Synaptic current input
-        :return: Neuron spike raster
+        :return: Binary tensor, 1 for spiked neurons, 0 for non-spiked neurons
         """
+
         # Check for variable dimensions and device used
         if not hasattr(self, 'volt_mem'):
             self.initialize_states(layer_shape=x.shape, model_device=x.device)
@@ -98,9 +100,10 @@ class SpikingNeuronLayer(nn.Module):
     def compute_membrane_potentials(self, x: torch.Tensor) -> None:
         """
 
-        Update neuron membrane potentials.
-        :param x: Synaptic current input
+        Update neuron membrane potentials.\n
+        :param x: Input Synaptic current
         """
+
         _prev_volt = self.membrane_potential_decay_factor * self.volt_mem
         _reset = self.neurons_spiked * self.spiking_threshold
         self.volt_mem = _prev_volt + x - _reset
@@ -111,6 +114,7 @@ class SpikingNeuronLayer(nn.Module):
         Check for membrane voltages which exceed the spiking threshold.\n
         :return: Binary tensor, 1 for spiked neurons, 0 for non-spiked neurons
         """
+
         # Apply relu on the membrane voltage
         self.neurons_spiked = nn.functional.relu(self.volt_mem)
 

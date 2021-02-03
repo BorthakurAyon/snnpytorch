@@ -21,6 +21,7 @@ class SNN(nn.Module):
         :param num_output_neurons: Number of neurons in output layer
         :param conn_prob: Connection probability from input to output layer
         """
+
         super().__init__()
 
         # Create input Synapse layer
@@ -35,8 +36,8 @@ class SNN(nn.Module):
         """
         Forward pass for this spiking neuron network
 
-        :param input_spikes: Network input data of spike raster
-        :return: Network output data of spike raster
+        :param input_spikes: Network input data (spike raster)
+        :return: Network output data (spike raster)
         """
 
         # Compute synaptic input for spiking neuron layer
