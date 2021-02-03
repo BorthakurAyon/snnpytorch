@@ -1,6 +1,9 @@
 SNN-PyTorch
 ============
 
+![License](https://img.shields.io/github/license/BorthakurAyon/snnpytorch?style=flat-square)
+
+
 A PyTorch based implementation of spiking neural network. 
 
 
