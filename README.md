@@ -36,8 +36,3 @@ Authors
 -------
 
 [Ayon Borthakur](mailto:ab2535@cornell.edu)
-
-License
---------
-
-MIT
