@@ -28,6 +28,10 @@ conda environment:
 * `cd` into snnpytorch (`cd snnpytorch`).
 * Install it as an editable install (`pip install -e .`).
 
+Documentation
+----------------------------
+<https://borthakurayon.github.io/snnpytorch/>
+
 Authors
 -------
 
