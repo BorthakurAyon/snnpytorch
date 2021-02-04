@@ -86,7 +86,7 @@ jobs:
         git config --global user.email "ab2535@cornell.edu"
         git config --global user.name "BorthakurAyon"
         git remote rm origin || true
-        git remote add origin "https://x-access-token:${GITHUB_TOKEN}@github.com/BorthakurAyon/snn_pytorch.git"
+        git remote add origin "https://x-access-token:${GITHUB_TOKEN}@github.com/BorthakurAyon/snnpytorch.git"
         git checkout --orphan gh-pages
         cp -r .git ~/docs_git
         cd ..
