@@ -1,0 +1,307 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Excitatory Synapse &mdash; SNN PyTorch Implementation 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Network" href="../network/api.html" />
+    <link rel="prev" title="Synapse" href="synapse.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> SNN PyTorch Implementation
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">The SNN-PyTorch API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../snnpytorch.html">SNN_PyTorch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../neuron/api.html">Neuron</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="api.html">Synapse</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="synapse.html">Synapse</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Excitatory Synapse</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../network/api.html">Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dataset/api.html">Dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../test/api.html">Run and plot spike raster</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">SNN PyTorch Implementation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../api.html">The SNN-PyTorch API</a> &raquo;</li>
+        
+          <li><a href="api.html">Synapse</a> &raquo;</li>
+        
+      <li>Excitatory Synapse</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/api/synapse/exc_synapse.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <span class="target" id="module-snnpytorch.synapse.exc_synapse"></span><div class="section" id="excitatory-synapse">
+<h1>Excitatory Synapse<a class="headerlink" href="#excitatory-synapse" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="snnpytorch.synapse.exc_synapse.SynapseLayer">
+<em class="property">class </em><code class="sig-prename descclassname">snnpytorch.synapse.exc_synapse.</code><code class="sig-name descname">SynapseLayer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">num_input_neurons</span><span class="o">=</span><span class="default_value">10</span></em>, <em class="sig-param"><span class="n">num_output_neurons</span><span class="o">=</span><span class="default_value">100</span></em>, <em class="sig-param"><span class="n">synapse_time_constant</span><span class="o">=</span><span class="default_value">0.05</span></em>, <em class="sig-param"><span class="n">conn_prob</span><span class="o">=</span><span class="default_value">0.5</span></em>, <em class="sig-param"><span class="n">initial_weight_config</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#snnpytorch.synapse.exc_synapse.SynapseLayer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<p>Class of a synapse layer.</p>
+<p>The iterative model for the synapse is inspired from the following papers:</p>
+<p>‘Enabling Deep Spiking Neural Networks with Hybrid Conversion and
+Spike Timing Dependent Backpropagation’ by Rathi et al. , ICLR 2019,
+<a class="reference external" href="https://openreview.net/forum?id=B1xSperKvH">https://openreview.net/forum?id=B1xSperKvH</a></p>
+<p>‘Spatio-Temporal Backpropagation for Training High-Performance
+Spiking Neural Networks’ by Wu et al.,
+<a class="reference external" href="https://www.frontiersin.org/articles/10.3389/fnins.2018.00331/full">https://www.frontiersin.org/articles/10.3389/fnins.2018.00331/full</a></p>
+<p>In PyTorch, the total synaptic input current to a neuron / synapse state
+(i) update is performed in the following manner:</p>
+<div class="math notranslate nohighlight">
+\[i^{t} = \lambda i^{t-1} + wI\]</div>
+<p>where <span class="math notranslate nohighlight">\(\lambda\)</span> is the synaptic time constant,
+t is the present timestep/iteration, w is the synaptic weight, I is the
+input spike.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>num_input_neurons</strong> – Number of neurons in input layer</p></li>
+<li><p><strong>num_output_neurons</strong> – Number of neurons in output layer</p></li>
+<li><p><strong>synapse_time_constant</strong> – Synapse time constant</p></li>
+<li><p><strong>conn_prob</strong> – Connection probability from input to output layer</p></li>
+<li><p><strong>initial_weight_config</strong> – Weight initialisation method and value.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Default value of initial_weight_config
+: {“method”: “constant”, “value”: 0.25}</p>
+<dl class="py method">
+<dt id="snnpytorch.synapse.exc_synapse.SynapseLayer.create_connectivity">
+<code class="sig-name descname">create_connectivity</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#snnpytorch.synapse.exc_synapse.SynapseLayer.create_connectivity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create random connectivity between input and output layer neurons.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="snnpytorch.synapse.exc_synapse.SynapseLayer.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.7.0a0+57bffc3 ))">torch.Tensor</a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.7.0a0+57bffc3 ))">torch.Tensor</a><a class="headerlink" href="#snnpytorch.synapse.exc_synapse.SynapseLayer.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Forward pass for this synapse layer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> – Input neuron spikes</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Synapse state / Input current to the output layer</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="snnpytorch.synapse.exc_synapse.SynapseLayer.initialize_states">
+<code class="sig-name descname">initialize_states</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">model_device</span><span class="o">=</span><span class="default_value">'cuda:0'</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#snnpytorch.synapse.exc_synapse.SynapseLayer.initialize_states" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialise synapse layer weights, connectivity, and state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>model_device</strong> – ‘cpu’ or ‘cuda:0’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="snnpytorch.synapse.exc_synapse.SynapseLayer.update_synapse_states">
+<code class="sig-name descname">update_synapse_states</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.7.0a0+57bffc3 ))">torch.Tensor</a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#snnpytorch.synapse.exc_synapse.SynapseLayer.update_synapse_states" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the synapse state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> – Input neuron spikes</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Synapse state / Input current to the output layer</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../network/api.html" class="btn btn-neutral float-right" title="Network" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="synapse.html" class="btn btn-neutral float-left" title="Synapse" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Ayon Borthakur.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
