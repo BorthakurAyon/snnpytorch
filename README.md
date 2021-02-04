@@ -8,7 +8,7 @@ SNN-PyTorch
 
 
 
-A PyTorch based implementation of spiking neural network. 
+A PyTorch based implementation of spiking neural network (SNN). 
 
 
 Installation
